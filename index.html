@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>เค้าขอโทษน้าา... ดีกันนะคะ 🥺💖</title>
+  
+  <!-- Google Fonts: Mali (Cute handwritten Thai font) & Itim -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating animated background elements -->
+  <div class="bg-stars" id="bgStars"></div>
+  <div class="bg-hearts" id="bgHearts"></div>
+  
+  <!-- Top Utility Controls -->
+  <div class="top-bar">
+    <button class="icon-btn" id="soundToggleBtn" title="เปิด/ปิดเสียงเอฟเฟกต์">
+      <span id="soundIcon">🔊</span>
+    </button>
+    <button class="icon-btn edit-toggle-btn" id="editModalBtn" title="ปรับแต่งข้อความ">
+      <span>✏️ แต่งข้อความ</span>
+    </button>
+  </div>
+
+  <!-- Main Container -->
+  <main class="page-wrapper">
+    <div class="card-container" id="mainCard">
+      
+      <!-- Top Decorative Banner (No English, No 'บันทึก') -->
+      <header class="top-header">
+        <div class="header-divider">
+          <span class="sparkle-star">✨</span>
+          <span class="header-title" id="displaySubtitle">— ขอคืนดีของเค้า —</span>
+          <span class="sparkle-star">✨</span>
+        </div>
+      </header>
+
+      <!-- Inner White Card -->
+      <div class="inner-card">
+        
+        <!-- Header Text -->
+        <div class="text-group">
+          <h1 class="main-title" id="displayTitle1">
+            <span class="title-text">เค้าขอโทษน้าาา...</span>
+            <span class="title-sparkle">✨</span>
+          </h1>
+          <h2 class="sub-title-big" id="displayTitle2">
+            <span class="reconcile-text">ดีกันนะคะ</span>
+            <span class="emoji-pleading">🥺</span>
+            <span class="emoji-heart">💖</span>
+          </h2>
+        </div>
+
+        <!-- Animated Cat Sprite Area (Clean cutout, no background) -->
+        <div class="illustration-wrapper" id="illustrationWrapper">
+          <div class="cat-stage" id="catStage">
+            <!-- Animated Cat Frame Display -->
+            <div class="cat-anim-box" id="catAnimBox">
+              <img id="catFrameImg" src="cat_sulk_01.png" alt="น้องแมว" class="cat-sprite-frame">
+            </div>
+
+            <!-- Floating Hearts Stream (Active on Reconcile) -->
+            <div class="floating-hearts-stream" id="floatingHeartsStream"></div>
+          </div>
+          
+          <!-- Speech Bubble for Pleading messages -->
+          <div class="speech-bubble" id="speechBubble">
+            <span id="speechText">งื้อออ... หายโกรธเค้าหน่อยน้าา 🥺</span>
+          </div>
+        </div>
+
+        <!-- Buttons Area -->
+        <div class="buttons-area">
+          <button class="btn btn-primary" id="btnAccept">
+            <span class="btn-sparkle-left">✦</span>
+            <span class="btn-text" id="acceptBtnText">ดีกันเยย! 💗</span>
+            <span class="btn-sparkle-right">✦</span>
+          </button>
+          
+          <button class="btn btn-secondary" id="btnReject">
+            <span class="reject-text" id="rejectBtnText">ยังโกรธอยู่😤</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Bottom Outer Footer Text -->
+      <footer class="bottom-footer">
+        <p class="footer-plead-text" id="displayFooterText">
+          <span class="pink-heart">💕</span>
+          <span class="plead-content">ยกโทษให้เค้าเถอะนะคับ... นะๆๆๆ 🙏🥺</span>
+          <span class="pink-heart">💕</span>
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- Success Celebration Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-card">
+      <div class="modal-header-decor">
+        <span class="confetti-emoji">🎉</span>
+        <span class="modal-heart">💖</span>
+        <span class="confetti-emoji">✨</span>
+      </div>
+      
+      <h2 class="modal-title">เย้ๆๆๆๆ! ดีกันแล้วน้าาา! 🥰</h2>
+      
+      <div class="modal-image-box">
+        <div class="love-animation">
+          <div class="pulsing-heart">💖</div>
+          <div class="little-hearts">
+            <span>💕</span><span>🌸</span><span>✨</span><span>🧸</span>
+          </div>
+        </div>
+      </div>
+      
+      <p class="modal-message">
+        ขอบคุณที่ยกโทษให้เค้านะค้าบบบบ จุ๊บๆ 💕<br>
+        รักแฟนที่สุดในสามโลกเลยยยยยย 🥰🫶<br>
+        <span class="promise-highlight">สัญญาว่าจะเป็นเด็กดี และรักคนนี้คนเดียวคับ!</span>
+      </p>
+
+      <div class="love-coupon">
+        <div class="coupon-tag">🎁 ตั๋วพิเศษสำหรับคนดี</div>
+        <div class="coupon-title">บัตรตามใจแฟน 1 วันเต็ม 💖</div>
+        <div class="coupon-desc">พาไปกินชาบู หมูกระทะ ชานมไข่มุก หรืออะไรก็ได้ที่อยากกินเลยยย 🧋🍰🍲</div>
+      </div>
+
+      <div class="modal-buttons">
+        <button class="btn btn-hug" id="btnHug">
+          <span>กอดกันแน่นๆ หน่อย 🫂💕</span>
+        </button>
+        <button class="btn btn-close-modal" id="btnCloseModal">
+          <span>กลับไปดูหน้าการ์ด ✨</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customization Modal -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal-card edit-card">
+      <div class="edit-header">
+        <h3>✏️ ปรับแต่งข้อความง้อแฟน</h3>
+        <button class="close-x-btn" id="closeEditModalBtn">&times;</button>
+      </div>
+      <p class="edit-desc">พิมพ์ชื่อแฟน หรือเปลี่ยนข้อความให้ตรงใจได้เลยคับ (บันทึกลงเครื่องอัตโนมัติ)</p>
+      
+      <div class="input-group">
+        <label for="inputSubtitle">ข้อความแถบด้านบน (แทน บันทึกขอคืนดี):</label>
+        <input type="text" id="inputSubtitle" value="— ขอคืนดีของเค้า —" placeholder="เช่น — ขอคืนดีของเค้า —">
+      </div>
+
+      <div class="input-group">
+        <label for="inputTitle1">ข้อความหัวเรื่อง 1:</label>
+        <input type="text" id="inputTitle1" value="เค้าขอโทษน้าาา..." placeholder="เช่น เค้าขอโทษน้าาา...">
+      </div>
+
+      <div class="input-group">
+        <label for="inputTitle2">ข้อความหัวเรื่อง 2:</label>
+        <input type="text" id="inputTitle2" value="ดีกันนะคะ" placeholder="เช่น ดีกันนะคะ หรือ ดีกันนะน้องบี๋">
+      </div>
+
+
+      <div class="input-group">
+        <label for="inputFooter">ข้อความด้านล่าง:</label>
+        <input type="text" id="inputFooter" value="ยกโทษให้เค้าเถอะนะคับ... นะๆๆๆ 🙏🥺" placeholder="เช่น ยกโทษให้เค้าเถอะนะคับ... นะๆๆๆ 🙏🥺">
+      </div>
+
+      <div class="edit-actions">
+        <button class="btn btn-save" id="btnSaveCustom">บันทึกข้อความ ✨</button>
+        <button class="btn btn-reset" id="btnResetCustom">คืนค่าเดิม</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
